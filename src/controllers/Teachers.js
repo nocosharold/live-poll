@@ -20,9 +20,29 @@ class Teachers {
 		}
 		client.hmset("poll_question", ["question", req.body.question, "choices", JSON.stringify(choices)], (err, result) => {});
 
-		client.expire("poll_question", 1800); ///expire in 30mins
+		client.expire("poll_question", 4000); ///expire in 30mins
 
 		res.json({ message: "Poll question has been created succussfully" });
+	}
+
+	teacher_response_data(req, res) {
+		client.exists("poll_question", async (err, result) => {
+			if (result == 0) {
+				return false;
+			}
+			client.hgetall("poll_question", async (err, obj) => {
+				let list = JSON.parse(obj.choices);
+
+				let response_list = [];
+				for (let i = 0; i < list.length; i++) {
+					response_list.push({
+						y: list[i].vote,
+						label: list[i].choice,
+					});
+				}
+				res.json({ question: obj.question, response_list });
+			});
+		});
 	}
 }
 
