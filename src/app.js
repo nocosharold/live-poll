@@ -2,9 +2,21 @@ const EXPRESS = require("express");
 const app = EXPRESS();
 const PORT = 8000;
 
+const server = app.listen(PORT, (req, res) => {
+	console.log(`server is listening to port ${PORT}`);
+});
+const io = require("socket.io")(server);
+
 let bodyParser = require("body-parser");
 let session = require("express-session");
 app.use(bodyParser.urlencoded({ extended: true }));
+
+io.on("connection", function (socket) {
+	socket.on("submit_answer_complete", function (data) {
+		socket.broadcast.emit("update_poll_data", { message: "update poll data" });
+	});
+	socket.on("disconnect", function () {});
+});
 
 app.use(
 	session({
@@ -24,5 +36,3 @@ app.set("view engine", "ejs");
 // use app.get method and pass it the base route '/' and a callback
 
 require("./routes.js")(app);
-
-app.listen(PORT);

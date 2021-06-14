@@ -28,11 +28,12 @@
 
         <script>
             $(document).ready(function(){
-               
+                const socket = io();
                 $("form").submit(function(){
                     console.log($(this).serialize());
                     $.post($(this).attr("action"),$(this).serialize(),function(response){
                         console.log(response);
+                        socket.emit("submit_answer_complete",{message:"submit answer complete"})
                     
                     },"json");
                     $(this).trigger("reset");
