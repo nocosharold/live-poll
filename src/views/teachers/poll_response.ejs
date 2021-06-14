@@ -7,9 +7,9 @@
             </div>
             <div class="poll-container container result col-6 p-3 shadow">
                 <h5>Poll Result</h5>
-                <p class="my-4">Who do you think is the most well-known programmer as of 2021?</p>
+                <p class="my-4 question">Who do you think is the most well-known programmer as of 2021?</p>
 
-                <h6>Larry Page</h6>
+                <!-- <h6>Larry Page</h6>
                 <div class="progress mb-3">
                     <div class="progress-bar" role="progressbar" style="width: 29%;" aria-valuemin="0" aria-valuemax="100">29%</div>
                 </div>
@@ -22,16 +22,47 @@
                 <h6>Tim Berners-Lee</h6>
                 <div class="progress mb-3">
                     <div class="progress-bar" role="progressbar" style="width: 27%;" aria-valuemin="0" aria-valuemax="100">27%</div>
-                </div>
+                </div> -->
 
-                <h6>David Heinemeier Hansson</h6>
+                <div class="choice-group">
+
+                </div>
+                <!-- <h6>David Heinemeier Hansson</h6>
                 <div class="progress mb-3">
                     <div class="progress-bar" role="progressbar" style="width: 28%;" aria-valuemin="0" aria-valuemax="100">28%</div>
-                </div>
+                </div> -->
             </div>
             <div class="poll-container-footer container result-footer col-6 shadow">
                 <a href="/poll_create" class="btn btn-outline-primary my-3">Create New Poll</a>
             </div>
         </section>
     </body>
+
+    <script>
+        $(document).ready(function(){
+            $.get(`http://localhost:8000/teacher_response_data`,function(response){
+                console.log(response);
+                $(".question").html(response.question);
+
+                
+                let total_sum = 0;
+                for(let i =0; i < response.response_list.length;i++){
+                    total_sum = response.response_list[i].y + total_sum;
+                }
+                console.log(total_sum);
+                let html = ``;
+                for(let i =0; i < response.response_list.length;i++){
+
+
+                    html += `<h6>${response.response_list[i].label}</h6>`;
+                    html += `<div class="progress mb-3">`;
+                    html += `   <div class="progress-bar" role="progressbar" style="width: ${(response.response_list[i].y/total_sum) * 100}%;" aria-valuemin="0" aria-valuemax="100">${(response.response_list[i].y/total_sum) * 100}% | ${response.response_list[i].y} votes</div>`;
+                    html += `</div>`;
+
+                }
+
+                $(".choice-group").html(html);
+            },"json");
+        });
+    </script>
 </html>
