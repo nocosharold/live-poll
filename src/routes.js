@@ -14,4 +14,6 @@ module.exports = (app) => {
 	app.get("/poll_answer", student.poll_answer);
 
 	app.post("/create_poll_process", teacher.create_poll_process);
+
+	app.post("/submit_answer", student.submit_answer);
 };
