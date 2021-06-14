@@ -1,0 +1,40 @@
+<%- include('../includes/head')%>
+    <body>
+        <%- include('../includes/nav')%>
+        <section>
+            <h1>Answer Poll</h1>
+            <h3>Answer polls and see the results in real-time.</h3>
+            <div class="poll-container container result col-6 p-3 mt-4 shadow">
+                <h4>Question</h4>
+                <p class="my-4">Who do you think is the most well-known programmer as of 2021?</p>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                    Larry Page
+                    </label>
+                </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                    Mark Zuckerberg
+                    </label>
+                </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+                    <label class="form-check-label" for="flexRadioDefault3">
+                    Tim Berners-Lee
+                    </label>
+                </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
+                    <label class="form-check-label" for="flexRadioDefault4">
+                    David Heinemeier Hansson
+                    </label>
+                </div>
+            </div>
+            <div class="poll-container-footer container answer-footer col-6 shadow">
+                <a href="/poll_create" class="btn btn-primary my-3">Vote</a>
+            </div>
+        </section>
+    </body>
+</html>

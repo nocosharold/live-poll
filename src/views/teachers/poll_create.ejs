@@ -1,0 +1,24 @@
+<%- include('../includes/head')%>
+    <body>
+        <%- include('../includes/nav')%>
+        <section>
+            <div class="container col-4">
+                <!-- <div class="input-group my-5">
+                    <input type="text" class="form-control shadow" placeholder="https://hackerhero.com/poll/12345" aria-label="https://hackerhero.com/poll/12345" aria-describedby="button-addon2">
+                    <button class="btn btn-primary" type="button">Copy Poll URL</button>
+                </div> -->
+            </div>
+            <div class="poll-container container col-6 p-3 shadow">
+                <h4>Question<span class="float-end"><a href="#"><i class="fas fa-sync-alt"></i></a></span></h4>
+                <textarea type="text" class="form-control text-area my-3" placeholder="Type your question here ..."></textarea>
+                <ul class="option-list">
+                </ul>
+                <a href="#" class="btn-sm btn-primary float-end nounderline"><i class="fas fa-plus-square me-2"></i>Add All</a>
+                <a href="#" class="btn-add-option d-block">+ Add an Option</a>
+            </div>
+            <div class="poll-container-footer container col-6 shadow">
+                <a href="/poll_response" class="btn btn-primary col-12 my-3">Start collecting responses and share the result (0/7 voted)</a>
+            </div> 
+        </section>
+    </body>
+</html>

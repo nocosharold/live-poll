@@ -1,0 +1,236 @@
+@dark-primary: #1b1d21;
+@text-primary: #fcfcfe;
+@text-secondary: #8c8c8c;
+
+@dark-secondary: #0b0a0f;
+@dark-tertiary: #2f3032;
+@primary: #3ad463;
+@secondary: #34c65c;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: @text-primary;
+    font-family: 'Lato', sans-serif;
+}
+
+body {
+    background-color: @dark-tertiary;
+}
+
+.navbar-bg {
+    background-color: @dark-primary;
+}
+
+h1, h3, h5 {
+    font-weight: 700;
+}
+
+h3, h4, h5, h6 {
+    color: @text-secondary;
+}
+
+section {
+    margin-top: 4rem;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: @secondary;
+    border-color: @secondary;
+    color: @text-primary;
+}
+
+.btn-primary:hover {
+    background-color: @primary;
+    border-color: @primary;
+}
+
+.btn-check:active+.btn-primary, .btn-check:checked+.btn-primary, .btn-primary.active, .btn-primary:active, .show>.btn-primary.dropdown-toggle, .btn-check:focus+.btn-primary, .btn-primary:focus, .btn-primary:active:focus {
+    background-color: @primary;
+    border-color: @primary;
+    box-shadow: none;
+}
+
+.fa-sync-alt {
+    color: @secondary;
+}
+
+.fa-sync-alt:hover {
+    color: @primary;
+}
+
+.hero-img {
+    height: 24rem;
+}
+
+.btn-sm {
+    text-decoration: none;
+}
+
+/* =====================
+    ? POLL CREATE PAGE
+====================== */
+
+section {
+    background-image: url("https://cdn.hackerhero.com/1.1/assets/images/index/hackerhero-hexa-bg.png");
+    height: 80vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom -100px;
+}
+
+.form-control, .form-control:focus {
+    background-color: @dark-secondary;
+    border-color:@text-secondary;
+    color: @text-primary;
+    box-shadow: none;
+}
+
+.poll-container {
+    border-radius:.5rem .5rem 0 0;
+    background-color: @dark-secondary;
+    text-align: left;
+    border-bottom: 1px solid @text-secondary;
+}
+
+.poll-container-footer {
+    border-radius: 0 0 .5rem .5rem;
+    background-color: @dark-secondary;
+}
+
+
+h4 {
+    border-bottom: 1px solid @text-secondary;
+    padding: 10px 0;
+    font-weight: 700;
+}
+
+ul li{
+    list-style: none;
+    margin: 10px;
+}
+
+ul li {
+    text-decoration: none;
+    color: @text-secondary;
+}
+
+textarea {
+    max-height: 100px;
+    background-color: @dark-secondary;
+    border: 1px solid white;
+}
+
+textarea::-webkit-scrollbar {
+    width: 12px;
+    background-color: @dark-secondary;
+    border-bottom: #0b0a0f; 
+}
+
+textarea::-webkit-scrollbar-thumb {
+    border-radius: .25rem;
+    background-color: @primary; 
+}
+
+.btn-add-option {
+    text-decoration: none;
+    color: @secondary;
+    margin-left: 2.4rem;
+}
+
+.btn-add-option:hover {
+    color: @primary;
+}
+
+.text-area {
+    background-color: @dark-secondary;
+    border:.5px solid @dark-tertiary !important;
+    color: @text-primary;
+    box-shadow: none;
+}
+
+/* =====================
+    ? POLL RESPONSE PAGE
+====================== */
+
+body > section > div.container.col-12 > a {
+    text-decoration: none;
+    font-weight: 700;
+}
+
+body > section > div.container.col-12 > a > i{
+    color: @text-secondary;
+}
+
+body > section > div.container.col-12 > a > i:hover{
+    color: @primary;
+}
+
+.progress-bar {
+    background-color: @primary;
+}
+
+.progress {
+    background-color: @dark-tertiary;
+}
+
+.result {
+    border-bottom: 2px solid @dark-primary;
+}
+
+.btn-primary.disabled, .btn-primary:disabled {
+    color: @text-primary;
+    background-color: @text-secondary;
+    border-color: @text-secondary;
+}
+
+.btn-outline-primary {
+    display: flex;
+    justify-content: flex-start;
+    border-color: @secondary;
+    color: @text-primary;
+    box-shadow: none;
+    margin-right: 36rem;
+    width: 160px;
+}
+
+.btn-outline-primary:hover {
+    background-color: @primary;
+    border-color: @secondary;
+}
+
+.btn-check:active+.btn-outline-primary, .btn-check:checked+.btn-outline-primary, .btn-outline-primary.active, .btn-outline-primary:active, .show>.btn-outline-primary.dropdown-toggle, .btn-check:focus+.btn-outline-primary, .btn-outline-primary:focus, .btn-outline-primary:active:focus {
+    background-color: @primary;
+    border-color: @primary;
+    box-shadow: none;
+}
+
+/* =====================
+    ? POLL ANSWER PAGE
+====================== */
+
+.result-footer, .answer-footer {
+    padding: 4px 16px 4px;
+}
+
+.answer-footer .btn-primary {
+    display: flex;
+    justify-content: flex-start;
+    margin-right: 38rem;
+    width: 120px;
+    padding-left: 40px;
+}
+
+.form-check-input:checked {
+    background-color: @primary;
+    border-color: @primary;
+    box-shadow: none;
+}
+
+.btn-check:active+.form-check-input, .btn-check:checked+.form-check-input, .form-check-input.active, .form-check-input:active, .show>.form-check-input.dropdown-toggle, .btn-check:focus+.form-check-input, .form-check-input:focus, .form-check-input:active:focus {
+    background-color: @primary;
+    border-color: @primary;
+    box-shadow: none;
+}
