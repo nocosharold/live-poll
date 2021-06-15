@@ -1,6 +1,7 @@
 <%- include('../includes/head')%>
     <body>
         <%- include('../includes/nav')%>
+        <%- include('../includes/alert')%>
         <section>
             <div class="container col-12">
                 <a href="/poll_create" class="btn-back"><i class="fas fa-arrow-left my-5 d-block text-start"> Back</i> </a>
@@ -25,6 +26,17 @@
 
     <script>
         $(document).ready(function(){
+            var option = {
+                animation: true,
+                }
+
+            function Toasty() {
+                var toastHTMLElement = document.getElementById("EpicToast");
+                var toastElement = new bootstrap.Toast( toastHTMLElement, option);
+                
+                toastElement.show();
+            }
+
             const socket = io();
             // on load
             $.get(`http://localhost:8000/teacher_response_data`,function(response){
@@ -37,13 +49,14 @@
                     total_sum = response.response_list[i].y + total_sum;
                 }
                 console.log(total_sum);
+                Toasty();
                 let html = ``;
                 for(let i =0; i < response.response_list.length;i++){
 
 
                     html += `<h6>${response.response_list[i].label}</h6>`;
                     html += `<div class="progress mb-3">`;
-                    html += `   <div class="progress-bar" role="progressbar" style="width: ${(response.response_list[i].y/total_sum) * 100}%;" aria-valuemin="0" aria-valuemax="100">${(response.response_list[i].y/total_sum) * 100}% | ${response.response_list[i].y} votes</div>`;
+                    html += `   <div class="progress-bar px-2" role="progressbar" style="width: ${(response.response_list[i].y/total_sum) * 100}%;" aria-valuemin="0" aria-valuemax="100">${parseFloat(((response.response_list[i].y/total_sum) * 100).toFixed(2))}% | ${response.response_list[i].y} votes</div>`;
                     html += `</div>`;
 
                 }
@@ -68,12 +81,13 @@
 
                     html += `<h6>${response.response_list[i].label}</h6>`;
                     html += `<div class="progress mb-3">`;
-                    html += `   <div class="progress-bar" role="progressbar" style="width: ${(response.response_list[i].y/total_sum) * 100}%;" aria-valuemin="0" aria-valuemax="100">${(response.response_list[i].y/total_sum) * 100}% | ${response.response_list[i].y} votes</div>`;
+                    html += `   <div class="progress-bar" role="progressbar" style="width: ${(response.response_list[i].y/total_sum) * 100}%;" aria-valuemin="0" aria-valuemax="100">${parseFloat(((response.response_list[i].y/total_sum) * 100).toFixed(2))}% | ${response.response_list[i].y} votes</div>`;
                     html += `</div>`;
 
                 }
 
                 $(".choice-group").html(html);
+                
             },"json");
             });
         });
