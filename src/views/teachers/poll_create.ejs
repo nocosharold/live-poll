@@ -1,26 +1,21 @@
 <%- include('../includes/head')%>
     <body>
         <%- include('../includes/nav')%>
+        <%- include('../includes/alert')%>
         <section>
-            <div class="container col-4">
-                <!-- <div class="input-group my-5">
-                    <input type="text" class="form-control shadow" placeholder="https://hackerhero.com/poll/12345" aria-label="https://hackerhero.com/poll/12345" aria-describedby="button-addon2">
-                    <button class="btn btn-primary" type="button">Copy Poll URL</button>
-                </div> -->
-            </div>
+            
             <div class="poll-container container col-6 p-3 shadow">
                 <h4>Question<span class="float-end"><a href="/poll_create"><i class="fas fa-sync-alt"></i></a></span></h4>
                 <form action="create_poll_process" method="POST">
                     <textarea type="text" name="question" class="form-control text-area my-3" placeholder="Type your question here ..."></textarea>
+                    
                     <ul class="option-list">
                     </ul>
-                    <!-- <button type="submit" class="btn-sm btn-primary float-end nounderline"><i class="fas fa-plus-square me-2"></i>Add All</button> -->
                 
                 <a href="#" class="btn-add-option d-block">+ Add an Option</a>
             </div>
             <div class="poll-container-footer container col-6 shadow">
-                    <!-- <a href="/poll_response" class="btn btn-primary col-12 my-3">Start collecting responses and share the result</a> -->
-                    <button onclick="location.href = 'http://localhost:8000/poll_response';" type="submit" class="btn btn-primary col-12 my-3">Start collecting responses</button>
+                    <button type="submit" class="btn btn-primary col-12 my-3">Start collecting responses</button>
                 </form>
             </div> 
         </section>
@@ -28,13 +23,28 @@
         <script>
             $(document).ready(function(){
 
+                var option = {
+                animation: true,
+                }
+
+                function Toasty() {
+                    var toastHTMLElement = document.getElementById("EpicToast");
+                    var toastElement = new bootstrap.Toast( toastHTMLElement, option);
+                    
+                    toastElement.show();
+                }
+
                 $("form").submit(function(){
                     $.post($(this).attr("action"),$(this).serialize(),function(response){
                         console.log(response);
+                        Toasty();
                         
                     },"json");
                     $(this).trigger("reset");
-                    $(".option-list").html();
+                    $(".option-list").html("");
+                    setTimeout(function(){
+                        window.location.replace("https://7ec820e383e2.ngrok.io/poll_response");
+                    }, 2000);
                     return false;
                 });
             });

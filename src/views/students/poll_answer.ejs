@@ -10,12 +10,10 @@
                 <div class="poll-container container result col-6 p-3 mt-4 shadow">
                     <h4>Question</h4>
                     <p class="my-4"><%= question %></p>
-                    <%let i= 0%>
                     <%for(let choice in choice_list){ %>
-                        <% if(i<=choice_list.length) { i++ } %>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" value="<%=choice_list[choice].choice%>" type="radio" name="choice" id="choice<%=i%>">
-                            <label class="form-check-label" for="choice<%=i%>">
+                            <input class="form-check-input" value="<%=choice_list[choice].choice%>" type="radio" name="choice" id="choice<%=choice_list[choice].choice%>">
+                            <label class="form-check-label" for="choice<%=choice_list[choice].choice%>">
                             <%=choice_list[choice].choice%>
                             </label>
                         </div>
