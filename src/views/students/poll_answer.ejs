@@ -1,6 +1,7 @@
 <%- include('../includes/head')%>
     <body>
         <%- include('../includes/nav')%>
+        <%- include('../includes/alert')%>
         <section>
             <h1>Answer Poll</h1>
             <h3>Answer polls and see the results in real-time.</h3>
@@ -28,13 +29,26 @@
 
         <script>
             $(document).ready(function(){
+                var option = {
+                animation: true,
+                // autohide: true,
+                // delay: 3000
+                }
+
+                function Toasty() {
+                    var toastHTMLElement = document.getElementById("EpicToast");
+                    var toastElement = new bootstrap.Toast( toastHTMLElement, option);
+                    $(".toast-body").html("Response has been sent.");
+                    toastElement.show();
+                }
+
                 const socket = io();
                 $("form").submit(function(){
                     console.log($(this).serialize());
                     $.post($(this).attr("action"),$(this).serialize(),function(response){
                         console.log(response);
                         socket.emit("submit_answer_complete",{message:"submit answer complete"})
-                    
+                        Toasty();
                     },"json");
                     $(this).trigger("reset");
                    

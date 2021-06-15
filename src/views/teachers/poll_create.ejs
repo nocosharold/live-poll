@@ -26,12 +26,24 @@
 
         <script>
             $(document).ready(function(){
-               
+
+                var option = {
+                animation: true,
+                // autohide: true,
+                // delay: 3000
+                }
+
+                function Toasty() {
+                    var toastHTMLElement = document.getElementById("EpicToast");
+                    var toastElement = new bootstrap.Toast( toastHTMLElement, option);
+                    
+                    toastElement.show();
+                }
+
                 $("form").submit(function(){
                     $.post($(this).attr("action"),$(this).serialize(),function(response){
                         console.log(response);
-                        // $(".toast").toast("show");
-                    //   $(".toast").addClass("show");
+                        Toasty();
                     },"json");
                     $(this).trigger("reset");
                     $(".option-list").html();
