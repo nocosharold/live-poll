@@ -22,7 +22,7 @@ class Teachers {
 
 		client.expire("poll_question", 4000); ///expire in 30mins
 
-		res.json({ message: "Poll question has been created succussfully" });
+		res.json({ message: "Poll question has been created successfully" });
 	}
 
 	teacher_response_data(req, res) {

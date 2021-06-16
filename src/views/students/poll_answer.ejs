@@ -12,8 +12,8 @@
                     <p class="my-4"><%= question %></p>
                     <%for(let choice in choice_list){ %>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" value="<%=choice_list[choice].choice%>" type="radio" name="choice" id="choice">
-                            <label class="form-check-label" for="choice">
+                            <input class="form-check-input" value="<%=choice_list[choice].choice%>" type="radio" name="choice" id="choice<%=choice_list[choice].choice%>">
+                            <label class="form-check-label" for="choice<%=choice_list[choice].choice%>">
                             <%=choice_list[choice].choice%>
                             </label>
                         </div>
@@ -31,8 +31,6 @@
             $(document).ready(function(){
                 var option = {
                 animation: true,
-                // autohide: true,
-                // delay: 3000
                 }
 
                 function Toasty() {
@@ -51,7 +49,7 @@
                         Toasty();
                     },"json");
                     $(this).trigger("reset");
-                   
+
                     return false;
                 });
             });
